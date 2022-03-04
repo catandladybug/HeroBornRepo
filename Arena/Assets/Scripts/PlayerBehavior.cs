@@ -6,7 +6,7 @@ public class PlayerBehavior : MonoBehaviour
 {
 
     public delegate void JumpingEvent();
-    //public event JumpingEvent playerJump;
+    public event JumpingEvent playerJump;
 
     public float moveSpeed = 10f;
     public float rotateSpeed = 75f;
@@ -95,6 +95,8 @@ public class PlayerBehavior : MonoBehaviour
         Vector3 capsuleBottom = new Vector3(_col.bounds.center.x, _col.bounds.min.y, _col.bounds.center.z);
         bool grounded = Physics.CheckCapsule(_col.bounds.center, capsuleBottom, distanceToGround, groundLayer, QueryTriggerInteraction.Ignore);
         return grounded;
+
+        playerJump();
 
     }
 
